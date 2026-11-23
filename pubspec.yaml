@@ -1,0 +1,46 @@
+name: finme
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  fpdart: ^1.2.0
+  flutter_riverpod: ^3.5.0
+  go_router: ^18.1.4
+  flutter_svg: ^2.4.0
+  equatable: ^3.0.0
+  shared_preferences: ^2.5.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
+
+  fonts:
+    - family: MonoSans
+      fonts:
+        - asset: assets/fonts/MonaSans-ExtraBold.ttf
+        - asset: assets/fonts/MonaSans-Bold.ttf
+        - asset: assets/fonts/MonaSans-Italic.ttf
+        - asset: assets/fonts/MonaSans-ExtraLight.ttf
+        - asset: assets/fonts/MonaSans-Light.ttf
+        - asset: assets/fonts/MonaSans-Medium.ttf
+        - asset: assets/fonts/MonaSans-SemiBold.ttf
+        - asset: assets/fonts/MonaSans-Regular.ttf
