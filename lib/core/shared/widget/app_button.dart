@@ -3,12 +3,12 @@ import 'package:finme/core/theme/app_dimensions.dart';
 import 'package:finme/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
-class PrimaryButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
   final bool isLoading;
 
-  const PrimaryButton({
+  const AppButton({
     super.key,
     required this.label,
     required this.onPressed,

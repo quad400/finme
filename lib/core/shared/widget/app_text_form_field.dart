@@ -52,7 +52,6 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
           obscureText: _obscureText,
           keyboardType: widget.keyboardType,
           validator: widget.validator,
-
           decoration: InputDecoration(
             hintText: widget.hint,
             prefixIcon: widget.prefixIcon != null

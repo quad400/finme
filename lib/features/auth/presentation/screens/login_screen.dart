@@ -1,7 +1,7 @@
 import 'package:finme/core/constants/app_icons.dart';
 import 'package:finme/core/router/app_routes.dart';
 import 'package:finme/core/shared/widget/app_text_form_field.dart';
-import 'package:finme/core/shared/widget/primary_button.dart';
+import 'package:finme/core/shared/widget/app_button.dart';
 import 'package:finme/core/theme/app_dimensions.dart';
 import 'package:finme/core/theme/app_text_style.dart';
 import 'package:flutter/gestures.dart';
@@ -104,7 +104,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           spacing: AppDimensions.paddingXs,
                           children: [
                             Expanded(
-                              child: PrimaryButton(
+                              child: AppButton(
                                 label: "Login",
                                 onPressed: _onSubmit,
                               ),
@@ -137,7 +137,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   text: "Create Account",
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () =>
-                                        context.push(AppRoutes.forgetPassword),
+                                        context.push(AppRoutes.createAccount),
                                 ),
                               ],
                             ),

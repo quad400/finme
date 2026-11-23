@@ -7,7 +7,7 @@ import 'package:finme/core/theme/app_text_style.dart';
 import 'package:finme/core/constants/app_images.dart';
 import 'package:finme/core/theme/app_color.dart';
 import 'package:finme/features/auth/presentation/provider/onboarding_provider.dart';
-import 'package:finme/core/shared/widget/primary_button.dart';
+import 'package:finme/core/shared/widget/app_button.dart';
 import 'package:go_router/go_router.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
@@ -118,7 +118,7 @@ class _OnboaridngScreenState extends ConsumerState<OnboardingScreen> {
               padding: EdgeInsetsGeometry.symmetric(
                 horizontal: AppDimensions.sideSpacing,
               ),
-              child: PrimaryButton(
+              child: AppButton(
                 label: "Next",
                 onPressed: () => _handleNext(),
               ),

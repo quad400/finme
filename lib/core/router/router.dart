@@ -1,6 +1,7 @@
 import 'package:finme/core/providers/router_provider.dart';
 import 'package:finme/core/router/app_routes.dart';
 import 'package:finme/features/auth/presentation/provider/onboarding_provider.dart';
+import 'package:finme/features/auth/presentation/screens/create_account_screen.dart';
 import 'package:finme/features/auth/presentation/screens/forgetpassword_screen.dart';
 import 'package:finme/features/auth/presentation/screens/login_screen.dart';
 import 'package:finme/features/auth/presentation/screens/onboarding_screen.dart';
@@ -38,6 +39,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.forgetPassword,
         builder: (context, state) => ForgetpasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.createAccount,
+        builder: (context, state) => CreateAccountScreen(),
       ),
     ],
   );
