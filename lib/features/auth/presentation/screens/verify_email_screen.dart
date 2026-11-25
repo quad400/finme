@@ -1,3 +1,4 @@
+import 'package:finme/core/router/app_routes.dart';
 import 'package:finme/core/shared/widget/app_header.dart';
 import 'package:finme/core/shared/widget/app_text_form_field.dart';
 import 'package:finme/core/shared/widget/custom_app_bar.dart';
@@ -5,18 +6,20 @@ import 'package:finme/core/shared/widget/app_button.dart';
 import 'package:finme/core/theme/app_color.dart';
 import 'package:finme/core/theme/app_dimensions.dart';
 import 'package:finme/core/utils/app_validator.dart';
+import 'package:finme/features/auth/presentation/notifier/verify_email_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-class CreateAccountScreen extends ConsumerStatefulWidget {
+class VerifyEmailScreen extends ConsumerStatefulWidget {
   const new({super.key});
 
   @override
-  ConsumerState<CreateAccountScreen> createState() =>
-      _CreateAccountScreenState();
+  ConsumerState<VerifyEmailScreen> createState() => _VerifyEmailScreenState();
 }
 
-class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
+class _VerifyEmailScreenState extends ConsumerState<VerifyEmailScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
 
   @override
@@ -25,9 +28,17 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
     super.dispose();
   }
 
-  void _submit() {
-    final email = _emailController.text.trim();
-    if (email.isEmpty) {}
+  Future<void> _submit() async {
+    if (_formKey.currentState!.validate()) return;
+    FocusScope.of(context).unfocus();
+
+    await ref
+        .read(verifyEmailProvider.notifier)
+        .verifyEmail(_emailController.text.trim());
+
+    if(!mounted) return;
+        
+    context.go(AppRoutes.forgetPassword);
   }
 
   @override
@@ -41,6 +52,7 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
             horizontal: AppDimensions.padding,
           ),
           child: Form(
+            key: _formKey,
             child: Column(
               spacing: AppDimensions.paddingXl,
               children: [

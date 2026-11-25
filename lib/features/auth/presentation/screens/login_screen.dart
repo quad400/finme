@@ -4,6 +4,8 @@ import 'package:finme/core/shared/widget/app_text_form_field.dart';
 import 'package:finme/core/shared/widget/app_button.dart';
 import 'package:finme/core/theme/app_dimensions.dart';
 import 'package:finme/core/theme/app_text_style.dart';
+import 'package:finme/core/utils/app_validator.dart';
+import 'package:finme/features/auth/presentation/notifier/login_notifier.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +36,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   void _onSubmit() {
-    if(!_formKey.currentState!.validate()) return;
-
+    if (!_formKey.currentState!.validate()) return;
+    FocusScope.of(context).unfocus();
+    ref
+        .read(loginProvider.notifier)
+        .login(_emailController.text.trim(), _passwordController.text.trim())
+        .then((response)=> print('alright'));
   }
 
   @override
@@ -66,6 +72,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         keyboardType: TextInputType.emailAddress,
                         label: "Email Address",
                         prefixIcon: AppIcons.email,
+                        validator: AppValidator.email,
                       ),
                       SizedBox(height: AppDimensions.padding),
                       AppTextFormField(
@@ -74,6 +81,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         keyboardType: TextInputType.emailAddress,
                         label: "Email Address",
                         prefixIcon: AppIcons.email,
+                        validator: AppValidator.password,
                         isPassword: true,
                       ),
                       SizedBox(height: AppDimensions.padding),
@@ -81,7 +89,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         text: TextSpan(
                           text: 'Forget Password? ',
                           style: AppTextStyle.bodySmall,
-                  
+
                           children: [
                             TextSpan(
                               text: "Reset",
@@ -95,7 +103,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ],
                         ),
                       ),
-                  
+
                       Padding(
                         padding: const EdgeInsets.only(
                           top: AppDimensions.paddingXxl,
@@ -137,7 +145,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   text: "Create Account",
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () =>
-                                        context.push(AppRoutes.createAccount),
+                                        context.push(AppRoutes.verifyEmail),
                                 ),
                               ],
                             ),

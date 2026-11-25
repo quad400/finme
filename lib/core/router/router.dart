@@ -1,8 +1,8 @@
 import 'package:finme/core/providers/router_provider.dart';
 import 'package:finme/core/router/app_routes.dart';
-import 'package:finme/features/auth/presentation/provider/onboarding_provider.dart';
-import 'package:finme/features/auth/presentation/screens/create_account_screen.dart';
-import 'package:finme/features/auth/presentation/screens/forgetpassword_screen.dart';
+import 'package:finme/features/auth/presentation/notifier/onboarding_notifier.dart';
+import 'package:finme/features/auth/presentation/screens/verify_email_screen.dart';
+import 'package:finme/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:finme/features/auth/presentation/screens/login_screen.dart';
 import 'package:finme/features/auth/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -41,8 +41,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => ForgetpasswordScreen(),
       ),
       GoRoute(
-        path: AppRoutes.createAccount,
-        builder: (context, state) => CreateAccountScreen(),
+        path: AppRoutes.verifyEmail,
+        builder: (context, state) => VerifyEmailScreen(),
       ),
     ],
   );

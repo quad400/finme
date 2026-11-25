@@ -27,7 +27,7 @@ class AppValidator {
       return 'Password is required';
     }
     final passwordRegex = RegExp(
-      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$',
+      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*.?&])[A-Za-z\d@$!%*.?&]{8,}$',
     );
 
     if (value != null && !passwordRegex.hasMatch(value.trim())) {

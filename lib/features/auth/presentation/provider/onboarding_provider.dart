@@ -1,4 +1,3 @@
-import 'package:finme/core/storage/local_storage.dart';
 import 'package:finme/features/auth/domain/entities/onboarding.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,20 +21,4 @@ final onboardingProvider = Provider<List<Onboarding>>((ref) {
   ];
 });
 
-final onboardingControllerProvider = AsyncNotifierProvider<OnboardingController, bool?>(OnboardingController.new);
 
-class OnboardingController extends AsyncNotifier<bool?>{
-
-  static const String hasOnboarded = "hasOnboarded";
-
-  @override
-  Future<bool?> build() async {
-    final isOnboarded = await LocalStorage.get<bool>(hasOnboarded);
-    return isOnboarded;
-  }
-
-  Future<void> complete() async{
-    LocalStorage.save(hasOnboarded, true);
-    state = const AsyncData(true);
-  }
-}
